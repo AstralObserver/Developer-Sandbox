@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://bdax71cnrtp41"]
+[gd_scene load_steps=4 format=3 uid="uid://bdax71cnrtp41"]
+
+[ext_resource type="Script" path="res://NoiseTester.gd" id="1_2ond8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gfemg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h2d1m"]
+resource_name = "SeamlessNoiseTexture"
+seamless = true
+noise = SubResource("FastNoiseLite_gfemg")
 
 [node name="Node2D" type="Node2D"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="NoiseViewer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_2ond8")
+
+[node name="SeamlessNoiseTexture" type="TextureRect" parent="VBoxContainer/NoiseViewer"]
+layout_mode = 2
+texture = SubResource("NoiseTexture2D_h2d1m")
+
+[node name="WorldMap" type="TileMapLayer" parent="."]
+
+[node name="NoiseTester" type="Node" parent="."]
