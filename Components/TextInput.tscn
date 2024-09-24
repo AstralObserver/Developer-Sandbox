@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cmohme0ggs70q"]
+
+[node name="Option7" type="VBoxContainer"]
+
+[node name="OptionName" type="Label" parent="."]
+layout_mode = 2
+text = "Option Name"
+
+[node name="VariableName" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Example Variable"

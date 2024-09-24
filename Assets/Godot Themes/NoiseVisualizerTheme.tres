@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://cwjwhh3bvp7r4"]
+
+[resource]
+BoxContainer/constants/separation = 4
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 12
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 12
+Label/fonts/font = null
+LineEdit/constants/outline_size = 2
+LineEdit/font_sizes/font_size = 12

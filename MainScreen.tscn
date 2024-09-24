@@ -1,27 +1,491 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdax71cnrtp41"]
+[gd_scene load_steps=6 format=3 uid="uid://bdax71cnrtp41"]
 
 [ext_resource type="Script" path="res://NoiseTester.gd" id="1_2ond8"]
+[ext_resource type="Theme" uid="uid://cwjwhh3bvp7r4" path="res://Assets/Godot Themes/NoiseVisualizerTheme.tres" id="1_4aeho"]
+
+[sub_resource type="Gradient" id="Gradient_u2vwc"]
+colors = PackedColorArray(0.197832, 1.34766e-06, 0.918753, 1, 0.215686, 0.772549, 0.0941176, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gfemg"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h2d1m"]
 resource_name = "SeamlessNoiseTexture"
 seamless = true
+color_ramp = SubResource("Gradient_u2vwc")
 noise = SubResource("FastNoiseLite_gfemg")
 
-[node name="Node2D" type="Node2D"]
+[node name="Noise Visualizer" type="Node2D"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="GUI" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_4aeho")
 
-[node name="NoiseViewer" type="MarginContainer" parent="VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="GUI"]
+layout_mode = 2
+color = Color(0.0504537, 0.0700301, 0.109928, 1)
+
+[node name="Borders" type="MarginContainer" parent="GUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="GUI Box" type="VBoxContainer" parent="GUI/Borders"]
+layout_mode = 2
+
+[node name="Control_Vis Split" type="HBoxContainer" parent="GUI/Borders/GUI Box"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split"]
+layout_mode = 2
+alignment = 1
+
+[node name="CoreVariablesBlock" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+layout_mode = 2
+
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock"]
+layout_mode = 2
+color = Color(0.150854, 0.175977, 0.251888, 1)
+
+[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CoreVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables"]
+layout_mode = 2
+text = "Core Variables
+"
+horizontal_alignment = 1
+
+[node name="Option" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/Option"]
+layout_mode = 2
+text = "Noise Type"
+horizontal_alignment = 1
+
+[node name="NoiseTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/Option"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 1
+item_count = 6
+popup/item_0/text = "Simplex"
+popup/item_1/text = "Simplex Smooth"
+popup/item_1/id = 1
+popup/item_2/text = "Cellular"
+popup/item_2/id = 2
+popup/item_3/text = "Perlin"
+popup/item_3/id = 3
+popup/item_4/text = "Value Cubic"
+popup/item_4/id = 4
+popup/item_5/text = "Value"
+popup/item_5/id = 5
+
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables"]
+layout_mode = 2
+columns = 2
+
+[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Offset" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9"]
+layout_mode = 2
+text = "Offset"
+horizontal_alignment = 1
+
+[node name="Offset Input" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9"]
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Seed" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7"]
+layout_mode = 2
+text = "Seed"
+horizontal_alignment = 1
+
+[node name="SeedInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7"]
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Frequency" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
+layout_mode = 2
+text = "Frequency"
+horizontal_alignment = 1
+
+[node name="FrequencyInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="DomainWarpEnabled" type="CheckBox" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+layout_mode = 2
+text = "Domain Warp"
+alignment = 1
+icon_alignment = 1
+
+[node name="FractalVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+layout_mode = 2
+
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables"]
+layout_mode = 2
+color = Color(0.150854, 0.175977, 0.251888, 1)
+
+[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FractalVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables"]
+layout_mode = 2
+text = "Fractal Variables
+"
+horizontal_alignment = 1
+
+[node name="Option2" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/Option2"]
+layout_mode = 2
+text = "Fractal Type"
+
+[node name="FractalTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/Option2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 1
+item_count = 4
+popup/item_0/text = "None"
+popup/item_1/text = "FBM"
+popup/item_1/id = 1
+popup/item_2/text = "Ridged"
+popup/item_2/id = 2
+popup/item_3/text = "Ping Pong"
+popup/item_3/id = 3
+
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables"]
+layout_mode = 2
+columns = 2
+
+[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="Gain" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7"]
+layout_mode = 2
+text = "Gain"
+horizontal_alignment = 1
+
+[node name="GainInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7"]
+layout_mode = 2
+placeholder_text = "0.5"
+
+[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="Lacunarity" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
+layout_mode = 2
+text = "Lacunarity"
+horizontal_alignment = 1
+
+[node name="LacunarityInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
+layout_mode = 2
+placeholder_text = "0.2"
+
+[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="Octaves" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9"]
+layout_mode = 2
+text = "Octaves"
+horizontal_alignment = 1
+
+[node name="OctavesInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9"]
+layout_mode = 2
+placeholder_text = "5"
+
+[node name="Option10" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="PingPongStrength" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10"]
+layout_mode = 2
+text = "Ping Pong Strength"
+horizontal_alignment = 1
+
+[node name="PingPongStrengthInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10"]
+layout_mode = 2
+placeholder_text = "2.0"
+
+[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="WeightedStrength" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11"]
+layout_mode = 2
+text = "Weighted Strength"
+horizontal_alignment = 1
+
+[node name="WeightedStrengthInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11"]
+layout_mode = 2
+placeholder_text = "0.0"
+
+[node name="CellularDistanceVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+layout_mode = 2
+
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables"]
+layout_mode = 2
+color = Color(0.150854, 0.175977, 0.251888, 1)
+
+[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CellularVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables"]
+layout_mode = 2
+text = "Cellular Variables
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables"]
+layout_mode = 2
+
+[node name="Option3" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3"]
+layout_mode = 2
+text = "Distance Function"
+
+[node name="CellularDistanceFunctionSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "Euclidean"
+popup/item_1/text = "Euclidean Squared"
+popup/item_1/id = 1
+popup/item_2/text = "Manhattan"
+popup/item_2/id = 2
+popup/item_3/text = "Hybrid"
+popup/item_3/id = 3
+
+[node name="Option4" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4"]
+layout_mode = 2
+text = "Return Type"
+
+[node name="CellularReturnTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 1
+item_count = 7
+popup/item_0/text = "Cell Value"
+popup/item_1/text = "Distance"
+popup/item_1/id = 1
+popup/item_2/text = "Distance 2"
+popup/item_2/id = 2
+popup/item_3/text = "Distance 2 +"
+popup/item_3/id = 3
+popup/item_4/text = "Distance 2 -"
+popup/item_4/id = 4
+popup/item_5/text = "Distance 2 *"
+popup/item_5/id = 5
+popup/item_6/text = "Distance 2 /"
+popup/item_6/id = 6
+
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables"]
+layout_mode = 2
+columns = 2
+
+[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="CellularJitter" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11"]
+layout_mode = 2
+text = "Jitter
+"
+horizontal_alignment = 1
+
+[node name="CellularJitterInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11"]
+layout_mode = 2
+placeholder_text = "1.0"
+
+[node name="DomainWarpVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+layout_mode = 2
+
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables"]
+layout_mode = 2
+color = Color(0.150854, 0.175977, 0.251888, 1)
+
+[node name="DomainWarpVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DomainWarpVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables"]
+layout_mode = 2
+text = "Domain Warp Variables"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables"]
+layout_mode = 2
+
+[node name="Option5" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5"]
+layout_mode = 2
+text = "Warp Type"
+
+[node name="DomainWarpTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Simplex"
+popup/item_1/text = "Simplex Reduced"
+popup/item_1/id = 1
+popup/item_2/text = "Basic Grid"
+popup/item_2/id = 2
+
+[node name="Option6" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6"]
+layout_mode = 2
+text = "Fractal Type"
+
+[node name="DomainFractalType" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6"]
+layout_mode = 2
+
+[node name="EnumSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6/DomainFractalType"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 1
+item_count = 3
+popup/item_0/text = "None"
+popup/item_1/text = "Progressive"
+popup/item_1/id = 1
+popup/item_2/text = "Independent"
+popup/item_2/id = 2
+
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables"]
+layout_mode = 2
+columns = 3
+
+[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="DomainWarpFrequency" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
+layout_mode = 2
+text = "Frequency
+"
+horizontal_alignment = 1
+
+[node name="DomainWarpFrequencyInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
+layout_mode = 2
+placeholder_text = "5"
+
+[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="Amplitude" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7"]
+layout_mode = 2
+text = "Amplitude
+"
+horizontal_alignment = 1
+
+[node name="AmplitudeInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7"]
+layout_mode = 2
+placeholder_text = "30.0"
+
+[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="DomainFractalGain" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8"]
+layout_mode = 2
+text = "Gain
+"
+horizontal_alignment = 1
+
+[node name="DomainFractalGainInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8"]
+layout_mode = 2
+placeholder_text = "0.5"
+
+[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="DomainFractalLacunarity" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9"]
+layout_mode = 2
+text = "Lacunarity"
+horizontal_alignment = 1
+
+[node name="DomainFractalLacunarityInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9"]
+layout_mode = 2
+placeholder_text = "6.0"
+
+[node name="Option10" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+layout_mode = 2
+
+[node name="DomainFractalOctave" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10"]
+layout_mode = 2
+text = "Octave"
+horizontal_alignment = 1
+
+[node name="DomainFractalOctaveInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10"]
+layout_mode = 2
+placeholder_text = "5"
+
+[node name="Visualizer Creation" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NoiseViewer" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation"]
 layout_mode = 2
 script = ExtResource("1_2ond8")
 
-[node name="SeamlessNoiseTexture" type="TextureRect" parent="VBoxContainer/NoiseViewer"]
+[node name="ColorRect" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/NoiseViewer"]
+layout_mode = 2
+color = Color(0.00930771, 0.024167, 0.0602909, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/NoiseViewer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="SeamlessNoiseTexture" type="TextureRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/NoiseViewer/MarginContainer"]
 layout_mode = 2
 texture = SubResource("NoiseTexture2D_h2d1m")
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer"]
+layout_mode = 2
+color = Color(0.00784314, 0.0235294, 0.0588235, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="RefreshVisualization" type="Button" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "Refresh Visualization"
 
 [node name="WorldMap" type="TileMapLayer" parent="."]
 
