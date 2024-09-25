@@ -15,11 +15,8 @@ color_ramp = SubResource("Gradient_u2vwc")
 noise = SubResource("FastNoiseLite_gfemg")
 
 [node name="GUI" type="MarginContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 40.0
+offset_bottom = 40.0
 theme = ExtResource("1_4aeho")
 script = ExtResource("1_2ond8")
 
@@ -138,7 +135,7 @@ horizontal_alignment = 1
 
 [node name="FrequencyInput" type="LineEdit" parent="Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
 layout_mode = 2
-placeholder_text = ".001"
+placeholder_text = "0"
 
 [node name="DomainWarpEnabled" type="CheckBox" parent="Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
 layout_mode = 2
@@ -209,7 +206,7 @@ horizontal_alignment = 1
 
 [node name="LacunarityInput" type="LineEdit" parent="Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
 layout_mode = 2
-placeholder_text = "2.0"
+placeholder_text = "0.2"
 
 [node name="Option9" type="VBoxContainer" parent="Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
@@ -403,7 +400,7 @@ horizontal_alignment = 1
 
 [node name="DomainWarpFrequencyInput" type="LineEdit" parent="Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
 layout_mode = 2
-placeholder_text = "0.05"
+placeholder_text = "5"
 
 [node name="Option7" type="VBoxContainer" parent="Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
 layout_mode = 2
@@ -499,5 +496,3 @@ theme_override_constants/margin_bottom = 1
 [node name="RefreshVisualization" type="Button" parent="Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer/MarginContainer"]
 layout_mode = 2
 text = "Refresh Visualization"
-
-[connection signal="pressed" from="Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer/MarginContainer/RefreshVisualization" to="." method="_refresh_noise"]
