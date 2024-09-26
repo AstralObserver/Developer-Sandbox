@@ -14,7 +14,7 @@ seamless = true
 color_ramp = SubResource("Gradient_u2vwc")
 noise = SubResource("FastNoiseLite_gfemg")
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="GUI_Layer" type="CanvasLayer"]
 
 [node name="GUI" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -22,7 +22,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_4aeho")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 script = ExtResource("1_2ond8")
 
 [node name="ColorRect" type="ColorRect" parent="GUI"]
@@ -31,10 +37,10 @@ color = Color(0.0504537, 0.0700301, 0.109928, 1)
 
 [node name="Borders" type="MarginContainer" parent="GUI"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="GUI Box" type="VBoxContainer" parent="GUI/Borders"]
 layout_mode = 2
@@ -42,36 +48,41 @@ layout_mode = 2
 [node name="Control_Vis Split" type="HBoxContainer" parent="GUI/Borders/GUI Box"]
 layout_mode = 2
 
-[node name="Buttons" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split"]
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/Borders/GUI Box/Control_Vis Split"]
 layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Buttons" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="CoreVariablesBlock" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+[node name="CoreVariablesBlock" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons"]
 layout_mode = 2
 
-[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock"]
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock"]
 layout_mode = 2
 color = Color(0.150854, 0.175977, 0.251888, 1)
 
-[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock"]
+[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CoreVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables"]
+[node name="CoreVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables"]
 layout_mode = 2
 text = "Core Variables
 "
 horizontal_alignment = 1
 
-[node name="Option" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables"]
+[node name="Option" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables"]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/Option"]
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/Option"]
 layout_mode = 2
 text = "Noise Type"
 horizontal_alignment = 1
 
-[node name="NoiseTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/Option"]
+[node name="NoiseTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/Option"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 1
@@ -88,91 +99,91 @@ popup/item_4/id = 4
 popup/item_5/text = "Value"
 popup/item_5/id = 5
 
-[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables"]
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables"]
 layout_mode = 2
 columns = 2
 
-[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Offset" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9"]
+[node name="Offset" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9"]
 layout_mode = 2
 text = "Offset"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9"]
 layout_mode = 2
 
-[node name="OffsetInput1" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer"]
-layout_mode = 2
-placeholder_text = "0"
-
-[node name="OffsetInput2" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer"]
+[node name="OffsetInput1" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer"]
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="OffsetInput3" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer"]
+[node name="OffsetInput2" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer"]
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+[node name="OffsetInput3" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Seed" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7"]
+[node name="Seed" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7"]
 layout_mode = 2
 text = "Seed"
 horizontal_alignment = 1
 
-[node name="SeedInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7"]
+[node name="SeedInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7"]
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Frequency" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
+[node name="Frequency" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
 layout_mode = 2
 text = "Frequency"
 horizontal_alignment = 1
 
-[node name="FrequencyInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
+[node name="FrequencyInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8"]
 layout_mode = 2
 placeholder_text = ".001"
 
-[node name="DomainWarpEnabled" type="CheckBox" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
+[node name="DomainWarpEnabled" type="CheckBox" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables"]
 layout_mode = 2
 text = "Domain Warp"
 alignment = 1
 icon_alignment = 1
 
-[node name="FractalVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+[node name="FractalVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons"]
 layout_mode = 2
 
-[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables"]
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables"]
 layout_mode = 2
 color = Color(0.150854, 0.175977, 0.251888, 1)
 
-[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables"]
+[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="FractalVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables"]
+[node name="FractalVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables"]
 layout_mode = 2
 text = "Fractal Variables
 "
 horizontal_alignment = 1
 
-[node name="Option2" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables"]
+[node name="Option2" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables"]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/Option2"]
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/Option2"]
 layout_mode = 2
 text = "Fractal Type"
 
-[node name="FractalTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/Option2"]
+[node name="FractalTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/Option2"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 1
@@ -185,98 +196,98 @@ popup/item_2/id = 2
 popup/item_3/text = "Ping Pong"
 popup/item_3/id = 3
 
-[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables"]
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables"]
 layout_mode = 2
 columns = 2
 
-[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="Gain" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7"]
+[node name="Gain" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7"]
 layout_mode = 2
 text = "Gain"
 horizontal_alignment = 1
 
-[node name="GainInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7"]
+[node name="GainInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7"]
 layout_mode = 2
 placeholder_text = "0.5"
 
-[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="Lacunarity" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
+[node name="Lacunarity" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
 layout_mode = 2
 text = "Lacunarity"
 horizontal_alignment = 1
 
-[node name="LacunarityInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
+[node name="LacunarityInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8"]
 layout_mode = 2
 placeholder_text = "2.0"
 
-[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="Octaves" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9"]
+[node name="Octaves" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9"]
 layout_mode = 2
 text = "Octaves"
 horizontal_alignment = 1
 
-[node name="OctavesInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9"]
+[node name="OctavesInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9"]
 layout_mode = 2
 placeholder_text = "5"
 
-[node name="Option10" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+[node name="Option10" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="PingPongStrength" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10"]
+[node name="PingPongStrength" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10"]
 layout_mode = 2
 text = "Ping Pong Strength"
 horizontal_alignment = 1
 
-[node name="PingPongStrengthInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10"]
+[node name="PingPongStrengthInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10"]
 layout_mode = 2
 placeholder_text = "2.0"
 
-[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables"]
+[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="WeightedStrength" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11"]
+[node name="WeightedStrength" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11"]
 layout_mode = 2
 text = "Weighted Strength"
 horizontal_alignment = 1
 
-[node name="WeightedStrengthInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11"]
+[node name="WeightedStrengthInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11"]
 layout_mode = 2
 placeholder_text = "0.0"
 
-[node name="CellularDistanceVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+[node name="CellularDistanceVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons"]
 layout_mode = 2
 
-[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables"]
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables"]
 layout_mode = 2
 color = Color(0.150854, 0.175977, 0.251888, 1)
 
-[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables"]
+[node name="CoreVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CellularVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables"]
+[node name="CellularVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables"]
 layout_mode = 2
 text = "Cellular Variables
 "
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables"]
 layout_mode = 2
 
-[node name="Option3" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer"]
+[node name="Option3" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer"]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3"]
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3"]
 layout_mode = 2
 text = "Distance Function"
 
-[node name="CellularDistanceFunctionSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3"]
+[node name="CellularDistanceFunctionSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -289,14 +300,14 @@ popup/item_2/id = 2
 popup/item_3/text = "Hybrid"
 popup/item_3/id = 3
 
-[node name="Option4" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer"]
+[node name="Option4" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer"]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4"]
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4"]
 layout_mode = 2
 text = "Return Type"
 
-[node name="CellularReturnTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4"]
+[node name="CellularReturnTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 1
@@ -315,50 +326,50 @@ popup/item_5/id = 5
 popup/item_6/text = "Distance 2 /"
 popup/item_6/id = 6
 
-[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables"]
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables"]
 layout_mode = 2
 columns = 2
 
-[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables"]
+[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="CellularJitter" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11"]
+[node name="CellularJitter" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11"]
 layout_mode = 2
 text = "Jitter
 "
 horizontal_alignment = 1
 
-[node name="CellularJitterInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11"]
+[node name="CellularJitterInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11"]
 layout_mode = 2
 placeholder_text = "1.0"
 
-[node name="DomainWarpVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons"]
+[node name="DomainWarpVariables" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons"]
 layout_mode = 2
 
-[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables"]
+[node name="BlockColor" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables"]
 layout_mode = 2
 color = Color(0.150854, 0.175977, 0.251888, 1)
 
-[node name="DomainWarpVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables"]
+[node name="DomainWarpVariables" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="DomainWarpVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables"]
+[node name="DomainWarpVariables" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables"]
 layout_mode = 2
 text = "Domain Warp Variables"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables"]
 layout_mode = 2
 
-[node name="Option5" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer"]
+[node name="Option5" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer"]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5"]
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5"]
 layout_mode = 2
 text = "Warp Type"
 
-[node name="DomainWarpTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5"]
+[node name="DomainWarpTypeSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -369,17 +380,17 @@ popup/item_1/id = 1
 popup/item_2/text = "Basic Grid"
 popup/item_2/id = 2
 
-[node name="Option6" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer"]
+[node name="Option6" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer"]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6"]
+[node name="OptionName" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6"]
 layout_mode = 2
 text = "Fractal Type"
 
-[node name="DomainFractalType" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6"]
+[node name="DomainFractalType" type="HBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6"]
 layout_mode = 2
 
-[node name="EnumSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6/DomainFractalType"]
+[node name="EnumSelector" type="OptionButton" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6/DomainFractalType"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 1
@@ -390,79 +401,82 @@ popup/item_1/id = 1
 popup/item_2/text = "Independent"
 popup/item_2/id = 2
 
-[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables"]
+[node name="ControlVariables" type="GridContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables"]
 layout_mode = 2
 columns = 3
 
-[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+[node name="Option11" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="DomainWarpFrequency" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
+[node name="DomainWarpFrequency" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
 layout_mode = 2
 text = "Frequency
 "
 horizontal_alignment = 1
 
-[node name="DomainWarpFrequencyInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
+[node name="DomainWarpFrequencyInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11"]
 layout_mode = 2
 placeholder_text = "0.05"
 
-[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+[node name="Option7" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="Amplitude" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7"]
+[node name="Amplitude" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7"]
 layout_mode = 2
 text = "Amplitude
 "
 horizontal_alignment = 1
 
-[node name="AmplitudeInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7"]
+[node name="AmplitudeInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7"]
 layout_mode = 2
 placeholder_text = "30.0"
 
-[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+[node name="Option8" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="DomainFractalGain" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8"]
+[node name="DomainFractalGain" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8"]
 layout_mode = 2
 text = "Gain
 "
 horizontal_alignment = 1
 
-[node name="DomainFractalGainInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8"]
+[node name="DomainFractalGainInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8"]
 layout_mode = 2
 placeholder_text = "0.5"
 
-[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+[node name="Option9" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="DomainFractalLacunarity" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9"]
+[node name="DomainFractalLacunarity" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9"]
 layout_mode = 2
 text = "Lacunarity"
 horizontal_alignment = 1
 
-[node name="DomainFractalLacunarityInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9"]
+[node name="DomainFractalLacunarityInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9"]
 layout_mode = 2
 placeholder_text = "6.0"
 
-[node name="Option10" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
+[node name="Option10" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables"]
 layout_mode = 2
 
-[node name="DomainFractalOctave" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10"]
+[node name="DomainFractalOctave" type="Label" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10"]
 layout_mode = 2
 text = "Octave"
 horizontal_alignment = 1
 
-[node name="DomainFractalOctaveInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10"]
+[node name="DomainFractalOctaveInput" type="LineEdit" parent="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10"]
 layout_mode = 2
 placeholder_text = "5"
 
 [node name="Visualizer Creation" type="VBoxContainer" parent="GUI/Borders/GUI Box/Control_Vis Split"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 10
 
 [node name="NoiseViewer" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="ColorRect" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/NoiseViewer"]
 layout_mode = 2
@@ -482,10 +496,11 @@ texture = SubResource("NoiseTexture2D_h2d1m")
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation"]
 layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 50
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 25
 
 [node name="ColorRect" type="ColorRect" parent="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer"]
 layout_mode = 2
@@ -502,4 +517,5 @@ theme_override_constants/margin_bottom = 1
 layout_mode = 2
 text = "Refresh Visualization"
 
+[connection signal="toggled" from="GUI/Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/DomainWarpEnabled" to="GUI" method="_warp_enabler"]
 [connection signal="pressed" from="GUI/Borders/GUI Box/Control_Vis Split/Visualizer Creation/MarginContainer/MarginContainer/RefreshVisualization" to="GUI" method="_refresh_noise"]

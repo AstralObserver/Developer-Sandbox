@@ -4,29 +4,29 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 @onready var noise: FastNoiseLite = $"Borders/GUI Box/Control_Vis Split/Visualizer Creation/NoiseViewer/MarginContainer/SeamlessNoiseTexture".texture.noise
 
-@onready var noise_type_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/Option/NoiseTypeSelector"
-@onready var fractal_type_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/Option2/FractalTypeSelector"
-@onready var return_type_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4/CellularReturnTypeSelector"
-@onready var cellular_distance_function_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3/CellularDistanceFunctionSelector"
-@onready var domain_warp_type_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5/DomainWarpTypeSelector"
-@onready var domain_warp_fractal_type_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6/DomainFractalType/EnumSelector"
+@onready var noise_type_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/Option/NoiseTypeSelector"
+@onready var fractal_type_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/Option2/FractalTypeSelector"
+@onready var return_type_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option4/CellularReturnTypeSelector"
+@onready var cellular_distance_function_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/HBoxContainer/Option3/CellularDistanceFunctionSelector"
+@onready var domain_warp_type_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option5/DomainWarpTypeSelector"
+@onready var domain_warp_fractal_type_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/HBoxContainer/Option6/DomainFractalType/EnumSelector"
 
-@onready var seed_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7/SeedInput"
-@onready var frequency_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8/FrequencyInput"
-@onready var offset1_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer/OffsetInput1"
-@onready var offset2_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer/OffsetInput2"
-@onready var offset3_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer/OffsetInput3"
-@onready var fractal_gain_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7/GainInput"
-@onready var fractal_lacunarity_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8/LacunarityInput"
-@onready var fractal_octaves_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9/OctavesInput" 
-@onready var fractal_ping_pong_strength_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10/PingPongStrengthInput"
-@onready var fractal_weighted_strength_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11/WeightedStrengthInput"
-@onready var cellular_jitter_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11/CellularJitterInput"
-@onready var domain_warp_frequency_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11/DomainWarpFrequencyInput"
-@onready var domain_warp_fractal_gain_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8/DomainFractalGainInput"
-@onready var domain_warp_fractal_lacunarity_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9/DomainFractalLacunarityInput"
-@onready var domain_warp_fractal_octaves_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10/DomainFractalOctaveInput"
-@onready var domain_warp_amplitude_loc = $"Borders/GUI Box/Control_Vis Split/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7/AmplitudeInput"
+@onready var seed_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option7/SeedInput"
+@onready var frequency_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option8/FrequencyInput"
+@onready var offset1_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer/OffsetInput1"
+@onready var offset2_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer/OffsetInput2"
+@onready var offset3_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CoreVariablesBlock/CoreVariables/ControlVariables/Option9/HBoxContainer/OffsetInput3"
+@onready var fractal_gain_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option7/GainInput"
+@onready var fractal_lacunarity_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option8/LacunarityInput"
+@onready var fractal_octaves_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option9/OctavesInput" 
+@onready var fractal_ping_pong_strength_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option10/PingPongStrengthInput"
+@onready var fractal_weighted_strength_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/FractalVariables/CoreVariables/ControlVariables/Option11/WeightedStrengthInput"
+@onready var cellular_jitter_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables/CoreVariables/ControlVariables/Option11/CellularJitterInput"
+@onready var domain_warp_frequency_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option11/DomainWarpFrequencyInput"
+@onready var domain_warp_fractal_gain_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option8/DomainFractalGainInput"
+@onready var domain_warp_fractal_lacunarity_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option9/DomainFractalLacunarityInput"
+@onready var domain_warp_fractal_octaves_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option10/DomainFractalOctaveInput"
+@onready var domain_warp_amplitude_loc = $"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables/DomainWarpVariables/ControlVariables/Option7/AmplitudeInput"
 @onready var warp_enabled = false
 
 @onready var locations = {
@@ -47,6 +47,17 @@ enum returnType {INT,FLOAT}
 
 func _ready() -> void:
 	_refresh_noise()
+
+func _process(delta) -> void:
+	if noise_type_loc.selected == 2:
+		$"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables".visible = true
+	else:
+		$"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/CellularDistanceVariables".visible = false
+	
+	if warp_enabled == false:
+		$"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables".visible = false
+	else:
+		$"Borders/GUI Box/Control_Vis Split/ScrollContainer/Buttons/DomainWarpVariables".visible = true
 
 func _refresh_noise():
 	noise.noise_type = _parse_noise_type(_prefill_input_if_empty(noise_type_loc,null))
